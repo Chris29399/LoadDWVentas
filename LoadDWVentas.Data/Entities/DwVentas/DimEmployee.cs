@@ -2,13 +2,13 @@
 
 namespace LoadDWVentas.Data.Entities.DwVentas
 {
-    [Table("DimCategories")]
+    [Table("DimEmployees")]
     public class DimEmployee
     {
         public int EmployeeId { get; set; }
 
         public int EmployeeKey { get; set; }
 
-        public int EmployeeName { get; set; }
+        public string? EmployeeName { get; set; }
     }
 }
