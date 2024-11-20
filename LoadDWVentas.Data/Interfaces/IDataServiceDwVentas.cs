@@ -5,8 +5,6 @@ namespace LoadDWVentas.Data.Interfaces
 {
     public interface IDataServiceDwVentas
     {
-        Task<OperationResult> LoadDimCategory();
-        Task<OperationResult> LoadDimEmployee();
-        Task<OperationResult> LoadDimProduct();
+        Task<OperationResult> LoadDWH();
     }
 }

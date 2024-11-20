@@ -1,7 +1,26 @@
+using LoadDWVentas.Data.Context;
+using LoadDWVentas.Data.Interfaces;
+using LoadDWVentas.Data.Services;
 using LoadDWVentas.Worker;
+using Microsoft.EntityFrameworkCore;
 
-var builder = Host.CreateApplicationBuilder(args);
-builder.Services.AddHostedService<Worker>();
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
 
-var host = builder.Build();
-host.Run();
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureServices((hostContext, services) =>
+        {
+            services.AddDbContextPool<NorthWindContext>(options => options.UseSqlServer(hostContext.Configuration.GetConnectionString("NorthWind")));
+
+            services.AddDbContextPool<DbSalesContext>(options => options.UseSqlServer(hostContext.Configuration.GetConnectionString("DbSales")));
+
+            services.AddScoped<IDataServiceDwVentas, DataServiceDwVentas>();
+
+            services.AddHostedService<Worker>();
+        });
+}
