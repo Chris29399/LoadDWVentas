@@ -22,11 +22,13 @@ namespace LoadDWVentas.Data.Services
             OperationResult result = new OperationResult();
             try
             {
-                await LoadDimCategory();
-                await LoadDimCustomer();
-                await LoadDimEmployee();
-                await LoadDimProduct();
-                await LoadDimShipper();
+                //await LoadDimCategory();
+                //await LoadDimCustomer();
+                //await LoadDimEmployee();
+                //await LoadDimProduct();
+                //await LoadDimShipper();
+                //await LoadFactSales();
+                await LoadFactClients();
             }
             catch (Exception ex)
             {
@@ -154,6 +156,40 @@ namespace LoadDWVentas.Data.Services
             {
                 result.Success = false;
                 result.Message = $"Error cargando la dimensión de empleado. {ex.Message}";
+            }
+
+            return result;
+        }
+
+        private async Task<OperationResult> LoadFactSales()
+        {
+            OperationResult result = new OperationResult();
+
+            try
+            {
+                var ventas = await _northwindContext.VwVentas.AsNoTracking().ToListAsync();
+            }
+            catch (Exception ex)
+            { 
+                result.Success = false;
+                result.Message = $"Error cargando Fact de Ventas. {ex.Message} ";
+            }
+
+            return result;
+        }
+
+        private async Task<OperationResult> LoadFactClients()
+        {
+            OperationResult result = new OperationResult();
+
+            try
+            {
+                var clientes = await _northwindContext.VwClientesAtendidos.AsNoTracking().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = $"Error cargando Fact de Clientes. {ex.Message} ";
             }
 
             return result;
