@@ -1,6 +1,5 @@
 ﻿using LoadDWVentas.Data.Entities.Northwind;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 
 namespace LoadDWVentas.Data.Context
 {
@@ -17,7 +16,6 @@ namespace LoadDWVentas.Data.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Shipper> Shippers { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
         #endregion
     }
 }

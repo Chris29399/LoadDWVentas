@@ -17,5 +17,7 @@ namespace LoadDWVentas.Data.Context
         public DbSet<DimProduct> DimProducts { get; set; }
         public DbSet<DimShipper> DimShippers { get; set; }
         #endregion
+
+
     }
 }

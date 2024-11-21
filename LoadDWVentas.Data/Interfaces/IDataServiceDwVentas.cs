@@ -1,5 +1,4 @@
-﻿using LoadDWVentas.Data.Entities.DwVentas;
-using LoadDWVentas.Data.Results;
+﻿using LoadDWVentas.Data.Results;
 
 namespace LoadDWVentas.Data.Interfaces
 {

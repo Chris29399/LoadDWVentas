@@ -29,7 +29,7 @@ namespace LoadDWVentas.Worker
                     { 
                         var dataService = scope.ServiceProvider.GetRequiredService<IDataServiceDwVentas>();
 
-                        var result = dataService.LoadDWH();
+                        var result = await dataService.LoadDWH();
                     }
                 }
                 await Task.Delay(_configuration.GetValue<int>("timerTime"), stoppingToken);

@@ -6,7 +6,7 @@ namespace LoadDWVentas.Data.Entities.DwVentas
     {
         [Key]
         public int CustomerKey { get; set; }
-        public int CustomerId { get; set; }
+        public required string CustomerId { get; set; }
         public string? CustomerName { get; set; }
     }
 }

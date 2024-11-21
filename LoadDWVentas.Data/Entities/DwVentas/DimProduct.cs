@@ -13,8 +13,6 @@ namespace LoadDWVentas.Data.Entities.DwVentas
 
         public string? ProductName { get; set; }
 
-        public int SupplierKey { get; set; }
-
         public int CategoryKey { get; set; }
     }
 }

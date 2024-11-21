@@ -61,7 +61,6 @@ namespace LoadDWVentas.Data.Services
 
         private async Task<OperationResult> LoadDimCustomer()
         {
-
             OperationResult result = new OperationResult();
 
             try
@@ -114,14 +113,13 @@ namespace LoadDWVentas.Data.Services
             try
             {
                 var products = (from product in _northwindContext.Products
-                             join category in _northwindContext.Categories on product.CategoryId equals category.CategoryId
-                             join supplier in _northwindContext.Suppliers on product.SupplierId equals supplier.SupplierId
+                             join category in _northwindContext.Categories 
+                                on product.CategoryId equals category.CategoryId
                              select new DimProduct()
                              {
-                                 ProductId = product.ProductId,
-                                 ProductName = product.ProductName,
-                                 SupplierKey = supplier.SupplierId,
                                  CategoryKey = category.CategoryId,
+                                 ProductId = product.ProductId,
+                                 ProductName = product.ProductName
                              }).AsNoTracking().ToList();
 
 
